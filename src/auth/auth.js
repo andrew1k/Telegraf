@@ -32,8 +32,7 @@ loginPassword.on('text', async (ctx) => {
     ctx.session.localId = data.localId
     ctx.session.isAuthorized = true
     // Затем все данные о пользователе собираются и записываются в бд
-    let authorizedUser = {'first_name' : ctx.message.chat.first_name,
-    'id': ctx.message.chat.id,
+    let authorizedUser = {'telegramFirstName' : ctx.message.chat.first_name,
     'username': ctx.message.chat.username,
     'isAuthorized': true,
     'email': ctx.wizard.state.data.loginEmail}
@@ -46,8 +45,21 @@ loginPassword.on('text', async (ctx) => {
     for(let appKey in appUsers) {
       for(let telegramKey in telegramUsers) {
         if (appUsers[appKey].email === telegramUsers[telegramKey].email) {
-          await axios.patch(`${process.env.DB_URL}/telegramUsers/registered/${telegramKey}.json`, {'appId': appKey})
-          await axios.patch(`${process.env.DB_URL}/appUsers/${appKey}.json`, {'telegramId': telegramKey})
+          await axios.patch(`${process.env.DB_URL}/telegramUsers/registered/${telegramKey}.json`, {
+            'appId': appKey,
+            'birthDate': appUsers[appKey].birthDate,
+            'firstName': appUsers[appKey].firstName,
+            'secondName': appUsers[appKey].secondName,
+            'authLevel': appUsers[appKey].authLevel,
+            'personGender': appUsers[appKey].personGender,
+            'phoneNumber': appUsers[appKey].phoneNumber,
+          })
+          await axios.patch(`${process.env.DB_URL}/appUsers/${appKey}.json`, {
+            'telegramId': telegramKey, 
+            'telegramFirstName': telegramUsers[telegramKey].telegramFirstName,
+            'telegramUsername': telegramUsers[telegramKey].username,
+            'telegramIsAuthorized': telegramUsers[telegramKey].isAuthorized
+          })
         }
       }
     }

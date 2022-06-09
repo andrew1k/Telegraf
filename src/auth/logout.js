@@ -12,7 +12,9 @@ const finishLogout = new Composer()
 finishLogout.on('text',async ctx => {
   if (ctx.message.text === 'Да') {
     ctx.session.isAuthorized = false
-    await axios.patch(`${process.env.DB_URL}/telegramUsers/registered/${ctx.message.chat.id}.json`, {isAuthorized: false})
+    const {data: appId} = await axios.get(`${process.env.DB_URL}/telegramUsers/registered/${ctx.message.chat.id}/appId.json`)
+    await axios.patch(`${process.env.DB_URL}/appUsers/${appId}.json`, {telegramIsAuthorized: false})
+    await axios.delete(`${process.env.DB_URL}/telegramUsers/registered/${ctx.message.chat.id}.json`)
     await ctx.reply(replies.startBntAction, Markup.keyboard(keyboard.authKeyboard).resize())
     return ctx.scene.leave()
   } if (ctx.message.text === 'Нет') {

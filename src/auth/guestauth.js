@@ -7,7 +7,7 @@ const replies = require('../keyboard/keyboard-reply.js')
 const guestLoginStep = new Composer()
 guestLoginStep.on('text', async ctx => {
   let unauthorizedUser = {
-    'first_name': ctx.message.chat.first_name,
+    'telegramFirstName': ctx.message.chat.first_name,
     'id': ctx.message.chat.id,
     'username': ctx.message.chat.username,
     'isAuthorized': false
