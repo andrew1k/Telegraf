@@ -57,71 +57,71 @@ bot.hears('Serv', async ctx => {
   }
 })
 // ---------------------------------------------------------------------------------------------------- Main Switcher --------------------------------------------------------------------------------
-// bot.on('text', async ctx => {
-//   const messageText = ctx.message.text
-//   const chatId = ctx.message.chat.id
-//   // Проверка есть ли он в БД
-//   let {data: userData} = await axios.get(`${process.env.DB_URL}/telegramUsers/registered/${chatId}.json`)
-//   userData ? userData : { data : userData } = await axios.get(`${process.env.DB_URL}/telegramUsers/unregistered/${chatId}.json`)
-//   // Проверка сообщений
-//   switch (messageText) {
-//     case kb.homeBtn:
-//       userData.isAuthorized ? 
-//       ctx.reply(kb.homeBtn, Markup.keyboard(keyboard.leaderAuthedMenu).resize()) : 
-//       ctx.reply(kb.homeBtn, Markup.keyboard(keyboard.unauthedMenu).resize())
-//       break
-//     // case kb.webLinksBtn:
-//     //   ctx.reply(kb.webLinksBtn, Markup.inlineKeyboard([
-//     //     [``]
-//     //   ]))
-//     //   break
-//     case kb.unauthedMenu.learnMoreBtn: 
-//       if (!userData.isAuthorized) {
-//         ctx.reply(kb.unauthedMenu.learnMoreBtn, Markup.keyboard(keyboard.unauthedLearnMore).resize())
-//       }
-//       break
-//     case kb.unauthedMenu.learnMore.aboutChurch:
-//       if (!userData.isAuthorized) {
-//         ctx.reply(kb.unauthedMenu.learnMore.aboutChurch, Markup.keyboard(keyboard.unauthedLearnMore).resize())
-//       }
-//       break
-//     case kb.unauthedMenu.learnMore.aboutPastors:
-//       if (!userData.isAuthorized) {
-//         ctx.reply(kb.unauthedMenu.learnMore.aboutPastors, Markup.keyboard(keyboard.unauthedLearnMore).resize())
-//       }
-//       break
-//     case kb.unauthedMenu.learnMore.aboutSmallGroups:
-//       if (!userData.isAuthorized) {
-//         ctx.reply(kb.unauthedMenu.learnMore.aboutSmallGroups, Markup.keyboard(keyboard.unauthedLearnMore).resize())
-//       }
-//       break
-//     case kb.unauthedMenu.learnMore.aboutStart:
-//       if (!userData.isAuthorized) {
-//         ctx.reply(kb.unauthedMenu.learnMore.aboutStart, Markup.keyboard(keyboard.unauthedLearnMore).resize())
-//       }
-//       break
-//     case kb.unauthedMenu.learnMore.aboutSteps:
-//       if (!userData.isAuthorized) {
-//         ctx.reply(kb.unauthedMenu.learnMore.aboutSteps, Markup.keyboard(keyboard.unauthedLearnMore).resize())
-//       }
-//       break
-//     case kb.unauthedMenu.learnMore.aboutServ:
-//       if (!userData.isAuthorized) {
-//         ctx.reply(kb.unauthedMenu.learnMore.aboutServ, Markup.keyboard(keyboard.unauthedLearnMore).resize())
-//       }
-//       break
-//     case kb.unauthedMenu.learnMore.aboutHelp:
-//       if (!userData.isAuthorized) {
-//         ctx.reply(kb.unauthedMenu.learnMore.aboutHelp, Markup.keyboard(keyboard.unauthedLearnMore).resize())
-//       }
-//       break
-//     case kb.unauthedMenu.learnMore.aboutSocialWork:
-//       if (!userData.isAuthorized) {
-//         ctx.reply(kb.unauthedMenu.learnMore.aboutSocialWork, Markup.keyboard(keyboard.unauthedLearnMore).resize())
-//       }
-//       break
-//   }
-// })
+bot.on('text', async ctx => {
+  const messageText = ctx.message.text
+  const chatId = ctx.message.chat.id
+  // Проверка есть ли он в БД
+  let {data: userData} = await axios.get(`${process.env.DB_URL}/telegramUsers/registered/${chatId}.json`)
+  userData ? userData : { data : userData } = await axios.get(`${process.env.DB_URL}/telegramUsers/unregistered/${chatId}.json`)
+  // Проверка сообщений
+  switch (messageText) {
+    case kb.homeBtn:
+      userData.isAuthorized ? 
+      ctx.reply(kb.homeBtn, Markup.keyboard(keyboard.leaderAuthedMenu).resize()) : 
+      ctx.reply(kb.homeBtn, Markup.keyboard(keyboard.unauthedMenu).resize())
+      break
+    // case kb.webLinksBtn:
+    //   ctx.reply(kb.webLinksBtn, Markup.inlineKeyboard([
+    //     [``]
+    //   ]))
+    //   break
+    case kb.unauthedMenu.learnMoreBtn: 
+      if (!userData.isAuthorized) {
+        ctx.reply(kb.unauthedMenu.learnMoreBtn, Markup.keyboard(keyboard.unauthedLearnMore).resize())
+      }
+      break
+    case kb.unauthedMenu.learnMore.aboutChurch:
+      if (!userData.isAuthorized) {
+        ctx.reply(kb.unauthedMenu.learnMore.aboutChurch, Markup.keyboard(keyboard.unauthedLearnMore).resize())
+      }
+      break
+    case kb.unauthedMenu.learnMore.aboutPastors:
+      if (!userData.isAuthorized) {
+        ctx.reply(kb.unauthedMenu.learnMore.aboutPastors, Markup.keyboard(keyboard.unauthedLearnMore).resize())
+      }
+      break
+    case kb.unauthedMenu.learnMore.aboutSmallGroups:
+      if (!userData.isAuthorized) {
+        ctx.reply(kb.unauthedMenu.learnMore.aboutSmallGroups, Markup.keyboard(keyboard.unauthedLearnMore).resize())
+      }
+      break
+    case kb.unauthedMenu.learnMore.aboutStart:
+      if (!userData.isAuthorized) {
+        ctx.reply(kb.unauthedMenu.learnMore.aboutStart, Markup.keyboard(keyboard.unauthedLearnMore).resize())
+      }
+      break
+    case kb.unauthedMenu.learnMore.aboutSteps:
+      if (!userData.isAuthorized) {
+        ctx.reply(kb.unauthedMenu.learnMore.aboutSteps, Markup.keyboard(keyboard.unauthedLearnMore).resize())
+      }
+      break
+    case kb.unauthedMenu.learnMore.aboutServ:
+      if (!userData.isAuthorized) {
+        ctx.reply(kb.unauthedMenu.learnMore.aboutServ, Markup.keyboard(keyboard.unauthedLearnMore).resize())
+      }
+      break
+    case kb.unauthedMenu.learnMore.aboutHelp:
+      if (!userData.isAuthorized) {
+        ctx.reply(kb.unauthedMenu.learnMore.aboutHelp, Markup.keyboard(keyboard.unauthedLearnMore).resize())
+      }
+      break
+    case kb.unauthedMenu.learnMore.aboutSocialWork:
+      if (!userData.isAuthorized) {
+        ctx.reply(kb.unauthedMenu.learnMore.aboutSocialWork, Markup.keyboard(keyboard.unauthedLearnMore).resize())
+      }
+      break
+  }
+})
 
 
 
