@@ -1,14 +1,14 @@
 {
-  "name": "Telegraf",
-  "version": "1.0.0",
-  "description": "",
+  "name": "telegraf",
+  "version": "0.1.0",
+  "description": "telegram bot for church 'Mission of gospel'",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "MoG Team",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.15"
